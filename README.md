@@ -2,10 +2,10 @@
 
 Project setup
 Use yarn or npm to install the project dependencies:
-# Using npm..
+Using npm..
 npm install
 
-# Using yarn..
+Using yarn..
 yarn install
 
 # Add react-intl to your project
@@ -17,4 +17,17 @@ npm install --save react-intl
 
 # Step 2
 Wrap your app with IntlProvider
+
+To make the internationalization functions visible in all our components we have to wrap the App component with IntlProvider. 
+It expects the current locale as property. For the moment we're setting it to a fixed language, later we will determine the user's locale by evaluating the language request sent by the browser.
+
+import {IntlProvider} from "react-intl";
+
+ReactDOM.render(
+    <IntlProvider locale='en'>
+        <App/>
+    </IntlProvider>,
+    document.getElementById('root')
+);
+
 
