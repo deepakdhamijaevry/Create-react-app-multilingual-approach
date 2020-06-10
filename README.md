@@ -2,6 +2,7 @@
 
 Project setup
 Use yarn or npm to install the project dependencies:
+
 Using npm..
 npm install
 
@@ -24,10 +25,33 @@ It expects the current locale as property. For the moment we're setting it to a 
 import {IntlProvider} from "react-intl";
 
 ReactDOM.render(
-    <IntlProvider locale='en'>
-        <App/>
-    </IntlProvider>,
+    <IntlProvider locale='en'><App/></IntlProvider>,
     document.getElementById('root')
 );
 
+# Step 3
+Create folder "i18n" and its subfolder "locales" and the language files as json
+
+The translations of our custom text messages will be stored for each language in a separate .json file.Create the JSON file src/i18n/locales/nb.json for the Norwegion translation and create an en.json file english 
+
+Add translated messages from JSON files:
+
+en.json:
+{
+     "LOGIN.INVALIDLOGIN": "Invalid Email/Password"
+}
+nb.json:
+{
+     "LOGIN.INVALIDLOGIN": "Ugyldig e-postadresse / passord",
+}
+
+Import both .json files in one index.js in same folder
+and export both the files
+
+Index.js
+
+import en from "./en.json";
+import nb from "./nb.json";
+
+export default { en, nb };
 
