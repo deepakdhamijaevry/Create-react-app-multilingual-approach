@@ -37,17 +37,8 @@ class App extends Component {
                 <Route exact path="/">
                   <Redirect to="/login" />
                 </Route>
-
                 {/* LOGIN  ROUTES  */}
                 <Login exact path="/login" component={Login} languagesProp={this.state.languages} languageChangeProp={this.languageChange}></Login>
-
-                {/* APP WRAPPER  ROUTES  */}
-                <Route render={props => (
-                  <AppWrapper language={this.state.language}>
-                    <Component {...props} />
-                  </AppWrapper>
-                )} />
-
               </Switch>
             </div>
           </BrowserRouter>
