@@ -25,7 +25,9 @@ It expects the current locale as property. For the moment we're setting it to a 
 import {IntlProvider} from "react-intl";
 
 ReactDOM.render(
-    <IntlProvider locale='en'><App/></IntlProvider>,
+    <IntlProvider locale='en'>
+        <App/>
+    </IntlProvider>,
     document.getElementById('root')
 );
 
@@ -37,10 +39,12 @@ The translations of our custom text messages will be stored for each language in
 Add translated messages from JSON files:
 
 en.json:
+
 {
      "LOGIN.INVALIDLOGIN": "Invalid Email/Password"
 }
 nb.json:
+
 {
      "LOGIN.INVALIDLOGIN": "Ugyldig e-postadresse / passord",
 }
@@ -55,3 +59,12 @@ import nb from "./nb.json";
 
 export default { en, nb };
 
+# Step 4
+Create folder "i18n" and its subfolder "locales" and the language files as json
+
+First import FormattedMessage at the top of the login.js components
+import {FormattedMessage} from 'react-intl';
+
+and Use this in html like this :
+
+<FormattedMessage id="LOGIN.TITLE" defaultMessage="Employee Portal" />
