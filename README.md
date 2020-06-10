@@ -75,7 +75,5 @@ First import FormattedMessage at the top of the login.js components
 
 import {FormattedMessage} from 'react-intl';
 
-and Use this in html like this:
-
-<FormattedMessage id="LOGIN.TITLE" defaultMessage="Employee Portal" />
-
+&lt;
+FormattedMessage id="LOGIN.TITLE" defaultMessage="Employee Portal"&gt;
