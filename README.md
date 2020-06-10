@@ -64,6 +64,7 @@ Import both .json files in one index.js in same folder and then export both the 
 Index.js
 
 import en from "./en.json";
+
 import nb from "./nb.json";
 
 export default { en, nb };
@@ -74,6 +75,7 @@ First import FormattedMessage at the top of the login.js components
 
 import {FormattedMessage} from 'react-intl';
 
-and Use this in html like this :
+and Use this in html like this:
 
 <FormattedMessage id="LOGIN.TITLE" defaultMessage="Employee Portal" />
+
