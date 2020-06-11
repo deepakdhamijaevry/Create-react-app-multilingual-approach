@@ -1,6 +1,6 @@
 # Create-react-app-multilangual-approach
 
-Project setup
+# Project setup
 
 Get project through Git Clone
 
@@ -10,18 +10,24 @@ git clone https://github.com/deepakdhamijaevry/Create-react-app-multilingual-app
 
 Use yarn or npm to install the project dependencies:
 
-Using npm..
+# Using npm..
+
 npm install
 
-Using yarn..
+# Or using yarn..
+
 yarn install
 
+# Step 1
 # Add react-intl to your project
 
-# Step 1
-As we want to use react-intl to localize our application, add it to you project:
+Adding React Intl
+To start using React Intl we need to add it to our project:
 
-npm install --save react-intl
+# Add with npm
+npm install react-intl
+# or add with yarn
+yarn add react-intl
 
 # Step 2
 Wrap your app with IntlProvider
@@ -80,7 +86,7 @@ export default { en, nb };
 # Step 4
 
 Add internationalization data with addLocaleData. In the first step we have to load the locale data for languages we want to support. 
-This data is provided by react-intl. The locale data is added by calling addLocaleData().
+This data is provided by react-intl.
 
 Add these lines to app.js:
 
@@ -90,10 +96,46 @@ import translations from "../../i18n/locales";
 
 const language = 'en'; //Default Language (english)
 
-addLocaleData(require(`react-intl/locale-data/${language}`));
-
-
 # Step 5
+The locale data is added by calling addLocaleData() in constructor and selected default language on load and added the languages array in state for dropdownlist control
+
+  constructor() {
+  
+    super();
+    
+    this.state = {
+    
+      language: language,
+      
+      messages: translations[language],
+      
+      languages: [
+        { value: 'en', name: 'English' },
+        { value: 'nb', name: 'Norwegian' }
+      ]
+      
+      //Default Language (en or nb -> as of now)
+    }
+    addLocaleData(require(`react-intl/locale-data/${language}`));
+    
+    this.languageChange = this.languageChange.bind(this);
+    
+  }
+  
+ # Step 6
+Create function for choosing the particular language from dropdownlist and load the corresponsing language file
+
+    languageChange(e) {
+    let self = this;
+    this.language = e.target.value;
+    self.setState({
+      language: this.language,
+      messages: translations[this.language]
+    });
+    addLocaleData(require(`react-intl/locale-data/${this.language}`));
+  }
+
+# Step 7
 
 First import FormattedMessage at the top of the login.js components
 
