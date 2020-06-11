@@ -1,4 +1,4 @@
-# Create-react-app-multilangual-approach
+# Create-react-app-multilingual-approach
 
 # Project setup
 
@@ -30,7 +30,7 @@ npm install react-intl
 yarn add react-intl
 
 # Step 2
-Wrap your app with IntlProvider
+Wrap your app with IntlProvider in App.js
 
 To make the internationalization functions visible in all our components we have to wrap the App component with IntlProvider. 
 It expects the current locale as property. For the moment we're setting it to a fixed language, later we will determine the user's locale by evaluating the language request sent by the browser.
@@ -52,7 +52,7 @@ ReactDOM.render(
 # Step 3
 Create folder "i18n" and its subfolder "locales" in src folder and add the language files as json
 
-The translations of our custom text messages will be stored for each language in a separate .json file.Create the JSON file src/i18n/locales/nb.json for the Norwegion translation and create an en.json file english 
+The translations of our custom text messages will be stored for each language in a separate .json file. Create the JSON file src/i18n/locales/nb.json for the Norwegian translation and create an en.json file english 
 
 Add translated messages from JSON files:
 
@@ -88,7 +88,7 @@ export default { en, nb };
 Add internationalization data with addLocaleData. In the first step we have to load the locale data for languages we want to support. 
 This data is provided by react-intl.
 
-Add these lines to app.js:
+Import in App.js:
 
 import { IntlProvider, addLocaleData } from "react-intl";
 
@@ -97,7 +97,10 @@ import translations from "../../i18n/locales";
 const language = 'en'; //Default Language (english)
 
 # Step 5
+
 The locale data is added by calling addLocaleData() in constructor and selected default language on load and added the languages array in state for dropdownlist control
+
+Add this in App.js:
 
   constructor() {
   
@@ -125,6 +128,8 @@ The locale data is added by calling addLocaleData() in constructor and selected 
  # Step 6
 Create function for choosing the particular language from dropdownlist and load the corresponsing language file
 
+Import in App.js:
+
     languageChange(e) {
     let self = this;
     this.language = e.target.value;
@@ -134,8 +139,25 @@ Create function for choosing the particular language from dropdownlist and load 
     });
     addLocaleData(require(`react-intl/locale-data/${this.language}`));
   }
-
+  
 # Step 7
+Now set the locate with selected language and render the text as selected language
+
+Replace this in App.js:
+
+ReactDOM.render(
+
+    <IntlProvider locale={this.state.language} messages={this.state.messages}>
+    
+        <App/>
+        
+    </IntlProvider>,
+    
+    document.getElementById('root')
+    
+);
+
+# Step 8
 
 First import FormattedMessage at the top of the login.js components
 
