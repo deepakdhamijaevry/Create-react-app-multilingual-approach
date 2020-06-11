@@ -1,6 +1,13 @@
 # Create-react-app-multilangual-approach
 
 Project setup
+
+Get project through Git Clone
+
+Use command :
+
+git clone https://github.com/deepakdhamijaevry/Create-react-app-multilingual-approach.git
+
 Use yarn or npm to install the project dependencies:
 
 Using npm..
@@ -69,11 +76,27 @@ import nb from "./nb.json";
 
 export default { en, nb };
 
+
 # Step 4
+
+Add internationalization data with addLocaleData. In the first step we have to load the locale data for languages we want to support. 
+This data is provided by react-intl. The locale data is added by calling addLocaleData().
+
+Add these lines to app.js:
+
+import { IntlProvider, addLocaleData } from "react-intl";
+
+import translations from "../../i18n/locales";
+
+const language = 'en'; //Default Language (english)
+
+addLocaleData(require(`react-intl/locale-data/${language}`));
+
+
+# Step 5
 
 First import FormattedMessage at the top of the login.js components
 
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
-&lt;
-FormattedMessage id="LOGIN.TITLE" defaultMessage="Employee Portal"&gt;
+&lt;FormattedMessage id="LOGIN.TITLE" defaultMessage="Employee Portal"&gt;
